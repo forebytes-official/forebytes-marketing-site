@@ -187,7 +187,10 @@ Open items, none of which will look broken:
 
 1. **Waitlist.** Live and working on Supabase. Optional: add `BREVO_API_KEY` in Vercel to get an email
    to support@forebytes.com for each new signup. Delete any test rows from the `waitlist` table.
-2. **Solicitor review** of Privacy and Terms.
+2. **Solicitor review** of Privacy and Terms. In particular, ask whether capping liability at €0
+   (`app/terms/page.tsx`, "Limitation of liability") holds up under Irish consumer law — the terms
+   already carve out liability that can't lawfully be excluded, but the cap itself hasn't had legal
+   sign-off.
 3. **"Launched" vs "launching" in Dublin.** The founders' copy says launched; the home page, footer
    and metadata still say launching. Ask which is true.
 4. **Design placeholders still visible:** "YOUR DISH", "Dish name / Nutrition / € —" menu rows, and

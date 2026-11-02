@@ -12,7 +12,7 @@ export default function Privacy() {
   return (
     <LegalPage
       tone="sage"
-      tag="Last updated 12 October 2026"
+      tag="Last updated 2 November 2026"
       title="Privacy"
       accentWord="policy."
       intro="What Forebytes collects, why, and the rights you have over it."
@@ -27,7 +27,7 @@ export default function Privacy() {
           title: "Who is responsible for your data",
           body: (
             <>
-              <p>Forebytes Limited (&quot;Forebytes&quot;, &quot;we&quot;, &quot;us&quot;), registered in Ireland, is the data controller for the personal data described in this policy.</p>
+              <p>{SITE.company.legalName} (&quot;Forebytes&quot;, &quot;we&quot;, &quot;us&quot;), company number {SITE.company.number}, registered in {SITE.company.country}, is the data controller for the personal data described in this policy.</p>
               <p>Questions about your data, or this policy: {mail}</p>
             </>
           ),
@@ -39,35 +39,40 @@ export default function Privacy() {
             <>
               <Item title="Account information">
                 <p>Email address, username, and a hashed password (we never see or store your password in plain text), collected when you sign up. If you sign in with Apple or Google instead, we receive only the minimum identifier and email those services pass us. We never see your Apple or Google password.</p>
-                <p><b>Why:</b> to create and secure your account, and to let you sign back in.</p>
+                <p><b>Why:</b> to create and secure your account, and to let you sign back in. <b>Legal basis:</b> necessary to provide the service you&apos;ve signed up for.</p>
               </Item>
               <Item title="Profile information">
                 <p>Display name, username, an optional avatar photo, and whether your account is private or public.</p>
-                <p><b>Why:</b> so other users can recognise and (if you allow it) follow you.</p>
+                <p><b>Why:</b> so other users can recognise and (if you allow it) follow you. <b>Legal basis:</b> necessary to provide the service.</p>
               </Item>
               <Item title="Location">
                 <p>Your device&apos;s location, while you have the discover map open.</p>
-                <p><b>Why:</b> to show you restaurants near you. This is used live to query nearby places; it is not stored or retained once your session ends.</p>
+                <p><b>Why:</b> to show you restaurants near you. This is used live to query nearby places; it is not stored or retained once your session ends. <b>Legal basis:</b> necessary to provide the feature you&apos;ve opened.</p>
               </Item>
               <Item title="Content you create">
-                <p>Restaurant and dish ratings, written reviews, lists of places you&apos;ve saved or want to try, restaurants and dishes you contribute, and photos you submit of dishes.</p>
-                <p><b>Why:</b> this is the substance of the app, it&apos;s what you&apos;re here to do, and it&apos;s what other users see when they look up a restaurant or dish.</p>
+                <p>Restaurant and dish ratings, written reviews, lists of places you&apos;ve saved or want to try, and restaurants and dishes you contribute.</p>
+                <p><b>Why:</b> this is the substance of the app, it&apos;s what you&apos;re here to do, and it&apos;s what other users see when they look up a restaurant or dish. <b>Legal basis:</b> necessary to provide the service.</p>
+              </Item>
+              <Item title="AR submissions (dish photos and scans)">
+                <p>When you submit a dish for AR, what happens depends on your phone. On a LiDAR iPhone, the scan is built and processed on the device; nothing but the finished 3D model ever leaves your phone. On any other iPhone, you submit a few guided photos instead: faces are blurred and location data is stripped from the photo on your device, and the dish is cut out of its background, before anything leaves your phone. The photo is then checked against the dish by Anthropic (confirming it&apos;s a genuine match and estimating its size), and the 3D model itself is built by Meshy. Every submission, from either path, is reviewed by a moderator before it goes live.</p>
+                <p>Submitted photos are deleted once moderation is complete, whether the submission is approved or rejected. An approved 3D model is kept for as long as the dish listing it belongs to exists.</p>
+                <p><b>Why:</b> to build and verify the AR model you&apos;re contributing. <b>Legal basis:</b> necessary to provide the feature you&apos;ve chosen to use.</p>
               </Item>
               <Item title="Social connections">
                 <p>Who you follow, who follows you, and (if your account is private) pending follow requests.</p>
-                <p><b>Why:</b> to build your feed and control who sees your activity.</p>
+                <p><b>Why:</b> to build your feed and control who sees your activity. <b>Legal basis:</b> necessary to provide the service.</p>
               </Item>
               <Item title="Device and notification data">
                 <p>A device token used to deliver push notifications, and your notification preferences (which kinds of notifications you want).</p>
-                <p><b>Why:</b> so we can tell you about things like a new follower or an approved dish submission, if you&apos;ve chosen to receive them. You can turn notifications off entirely in Settings.</p>
+                <p><b>Why:</b> so we can tell you about things like a new follower or an approved dish submission, if you&apos;ve chosen to receive them. You can turn notifications off entirely in Settings. <b>Legal basis:</b> your consent, given when you allow notifications.</p>
               </Item>
               <Item title="Analytics">
                 <p>We use PostHog to understand how people use the app: which screens get opened, which features get used, and what fails. These events are tied to your account id, never to your email address, display name, written reviews, or anything you&apos;ve typed into a search box.</p>
-                <p><b>Why:</b> to find out what&apos;s broken and what isn&apos;t used, so we can fix and improve the app.</p>
+                <p><b>Why:</b> to find out what&apos;s broken and what isn&apos;t used, so we can fix and improve the app. <b>Legal basis:</b> our legitimate interest in keeping the app working and improving it.</p>
               </Item>
               <Item title="Error reports">
                 <p>We use Sentry to catch crashes and bugs, including some technical context (like which screen and what operation) to help us fix them.</p>
-                <p><b>Why:</b> so problems get found and fixed, ideally before you notice them twice.</p>
+                <p><b>Why:</b> so problems get found and fixed, ideally before you notice them twice. <b>Legal basis:</b> our legitimate interest in keeping the app working.</p>
               </Item>
             </>
           ),
@@ -82,12 +87,25 @@ export default function Privacy() {
                 <li><b>Supabase:</b> our database, authentication and file storage, hosted in the EU. This holds the bulk of your account and content data.</li>
                 <li><b>Mapbox:</b> provides the map and restaurant search results.</li>
                 <li><b>Google (Places API):</b> fills in restaurant photos that Mapbox doesn&apos;t provide.</li>
+                <li><b>Anthropic:</b> checks that a submitted AR photo matches the dish and estimates its size, for submissions that aren&apos;t a LiDAR scan.</li>
+                <li><b>Meshy:</b> builds the 3D model from a verified AR photo, for submissions that aren&apos;t a LiDAR scan.</li>
+                <li><b>Expo:</b> delivers push notifications to your device.</li>
                 <li><b>PostHog:</b> product analytics, EU-hosted.</li>
                 <li><b>Sentry:</b> error and crash reporting, EU-hosted.</li>
                 <li><b>Brevo:</b> sends transactional emails (sign-up confirmation, password reset, security notices). We do not use this for marketing emails.</li>
               </ul>
-              <p>Supabase, PostHog, Sentry, and Brevo are all EU-hosted or EU-based companies. Mapbox and Google (for restaurant photos) are US companies; where their processing involves data leaving the EU, this is covered by standard contractual clauses, the standard legal mechanism for that kind of transfer.</p>
+              <p>Supabase, PostHog, Sentry, and Brevo are all EU-hosted or EU-based companies. Mapbox, Google (for restaurant photos), Anthropic, and Meshy are US companies; where their processing involves data leaving the EU, this is covered by standard contractual clauses, the standard legal mechanism for that kind of transfer.</p>
               <p>We may also disclose information if required by law, or to protect the safety of our users.</p>
+            </>
+          ),
+        },
+        {
+          id: "moderation",
+          title: "Moderation",
+          body: (
+            <>
+              <p>When you report a restaurant, dish, review, or user, we store that report. A moderator reviewing it can see the content or account that was reported and who submitted it, so they can look into both sides of it.</p>
+              <p>AR submissions go through the same kind of review before they go live (see &quot;AR submissions&quot; above).</p>
             </>
           ),
         },
