@@ -7,4 +7,5 @@ export const SITE = {
     "Forebytes is a restaurant and dish discovery app for Dublin: a live map, menus with prices and nutrition, ratings for individual dishes (not just restaurants), and AR models built from real food scans you can place on your own table before you order.",
   locale: "en_IE",
   emails: { support: "support@forebytes.com" },
+  company: { legalName: "Forebytes Limited", country: "Ireland", number: "829261" },
 } as const;

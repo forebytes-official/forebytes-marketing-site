@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { registerGsap } from "@/lib/gsap";
+import { SITE } from "@/lib/site";
 
 const LETTERS = ["F", "o", "r", "e", "b", "y", "t", "e", "s", "."];
 
@@ -23,7 +24,7 @@ export function FooterCompact() {
         <Link href="/privacy" className="foot-link">Privacy policy</Link>
         <Link href="/terms" className="foot-link">Terms &amp; conditions</Link>
       </div>
-      <span className="text-sm">© 2026 Forebytes · Dublin</span>
+      <span className="text-sm">© 2026 {SITE.company.legalName} · Registered in {SITE.company.country}, no. {SITE.company.number}</span>
     </footer>
   );
 }
@@ -93,7 +94,7 @@ export function FooterFull() {
       </div>
 
       <div className="flex flex-wrap justify-between gap-3 border-t border-accent-200/25 pt-[18px] pb-6 text-sm">
-        <span>© 2026 Forebytes · Dublin</span>
+        <span>© 2026 {SITE.company.legalName} · Registered in {SITE.company.country}, no. {SITE.company.number}</span>
         <span>Made for the hungry.</span>
       </div>
     </footer>

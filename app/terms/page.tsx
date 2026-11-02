@@ -10,11 +10,11 @@ export default function Terms() {
   return (
     <LegalPage
       tone="terracotta"
-      tag="Last updated 12 October 2026"
+      tag="Last updated 2 November 2026"
       title="Terms &"
       accentWord="conditions."
       intro="The terms that govern your use of the Forebytes app."
-      preamble={<p>These terms govern your use of the Forebytes app. By creating an account, you agree to them.</p>}
+      preamble={<p>These terms govern your use of the Forebytes app, provided by {SITE.company.legalName}, company number {SITE.company.number}, registered in {SITE.company.country}. By creating an account, you agree to them.</p>}
       sections={[
         {
           id: "eligibility",
@@ -27,7 +27,7 @@ export default function Terms() {
           body: (
             <>
               <p>Forebytes is a free restaurant discovery app. There are no payments, paid tiers, or in-app purchases today.</p>
-              <p>Restaurant listings come from Mapbox&apos;s map data. Menus, dish photos, prices, descriptions, and allergen information are contributed by users, not verified by Forebytes or supplied by the restaurants themselves. AR visualisations of dishes are illustrative representations based on submitted photos, not exact, to-scale, or guaranteed representations of what you will actually be served.</p>
+              <p>Restaurant listings come from Mapbox&apos;s map data. Menus, dish photos, prices, descriptions, and allergen information are contributed by users, not verified by Forebytes or supplied by the restaurants themselves. Real size models are measured with a LiDAR scan but can still differ from what you&apos;re served. Approximate models are estimates.</p>
               <p className="callout"><b>Important:</b> do not rely on allergen or dietary information shown in the app as a substitute for asking the restaurant directly, especially where a genuine allergy or medical condition is involved. This information is user-submitted and may be incomplete, outdated, or wrong.</p>
             </>
           ),
