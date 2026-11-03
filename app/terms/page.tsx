@@ -10,7 +10,7 @@ export default function Terms() {
   return (
     <LegalPage
       tone="terracotta"
-      tag="Last updated 2 November 2026"
+      tag="Last updated 3 November 2026"
       title="Terms &"
       accentWord="conditions."
       intro="The terms that govern your use of the Forebytes app."

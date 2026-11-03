@@ -12,7 +12,7 @@ export default function Privacy() {
   return (
     <LegalPage
       tone="sage"
-      tag="Last updated 2 November 2026"
+      tag="Last updated 3 November 2026"
       title="Privacy"
       accentWord="policy."
       intro="What Forebytes collects, why, and the rights you have over it."
