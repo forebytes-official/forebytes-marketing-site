@@ -42,10 +42,8 @@ export default function Story() {
       const el = root.current!;
       const steps = gsap.utils.toArray<HTMLElement>("[data-step]", el);
       const screens = gsap.utils.toArray<HTMLElement>("[data-screen]", el);
-      const dots = gsap.utils.toArray<HTMLElement>("[data-dot]", el);
       const phone = el.querySelector<HTMLElement>("[data-phone]")!;
       const bg = el.querySelector<HTMLElement>("[data-story-bg]")!;
-      const journeyFill = el.querySelector<HTMLElement>("[data-journey-fill]")!;
       const n = steps.length;
       const PI = Math.PI;
 
@@ -71,8 +69,6 @@ export default function Story() {
           const d = idx - i - 0.5, a = Math.abs(d), o = clamp(1.5 - a * 3);
           gsap.set(s, { opacity: o, x: d * -240, rotation: d * -4, pointerEvents: o > 0.5 ? "auto" : "none" });
         });
-        const active = Math.min(n - 1, Math.floor(idx));
-        dots.forEach((d, i) => gsap.to(d, { scale: i === active ? 1.7 : 1, opacity: i === active ? 1 : 0.35, duration: 0.3, overwrite: true }));
         gsap.set(phone, {
           rotationY: Math.sin(p * PI * n) * 12,
           rotation: (p - 0.5) * -14,
@@ -80,7 +76,6 @@ export default function Story() {
           scale: 0.92 + Math.sin(p * PI) * 0.08,
         });
         gsap.set(bg, { scale: 0.75 + p * 0.35, rotation: p * 20, xPercent: 0, x: `${-p * 6}vw` });
-        gsap.set(journeyFill, { height: `${clamp(p) * 100}%` });
       };
       apply(0);
       ScrollTrigger.create({ trigger: el, start: "top top", end: "bottom bottom", onUpdate: (s) => apply(s.progress), onRefresh: (s) => apply(s.progress) });
@@ -116,14 +111,6 @@ export default function Story() {
                 </div>
               </div>
             </div>
-          </div>
-          {/* The journey line: a dashed path behind the step dots, with a solid fill that travels
-             down it as you scroll through the steps, so the dots read as one continuous path
-             rather than isolated markers. */}
-          <div className="absolute top-1/2 flex -translate-y-1/2 flex-col items-center gap-3" style={{ right: -6 }} aria-hidden>
-            <div className="border-accent-2-300 pointer-events-none absolute inset-y-0 w-0 border-l-2 border-dashed opacity-70" />
-            <div data-journey-fill className="bg-accent pointer-events-none absolute top-0 w-[2px] origin-top" style={{ height: 0 }} />
-            {STEPS.map((s) => <span key={s.n} data-dot className="bg-accent relative h-3 w-3 rounded-full" />)}
           </div>
         </div>
       </div>
