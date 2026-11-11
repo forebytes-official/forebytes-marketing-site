@@ -1,18 +1,20 @@
 /**
- * Forebytes' social profiles. Paste each full profile URL between the quotes; leave it empty until
- * the account exists. An empty or malformed entry is simply not shown anywhere (footer, About page,
- * welcome email, structured data), so there are never dead links.
+ * Forebytes' social profiles. Paste each full profile URL (https://...) between the quotes.
+ *
+ * On the site, all six icons always show; an icon becomes a link once its URL is filled in, and
+ * stays a plain, unclickable icon until then. The welcome email and structured data list only the
+ * filled ones, so nothing outside the site ever points at a missing profile.
  */
-export const SOCIAL_URLS = {
+export const SOCIAL_URLS: Record<SocialKey, string> = {
   instagram: "",
   tiktok: "",
   x: "",
   threads: "",
   linkedin: "",
   youtube: "",
-} as const;
+};
 
-export type SocialKey = keyof typeof SOCIAL_URLS;
+export type SocialKey = "instagram" | "tiktok" | "x" | "threads" | "linkedin" | "youtube";
 
 const LABELS: Record<SocialKey, string> = {
   instagram: "Instagram",
@@ -23,16 +25,26 @@ const LABELS: Record<SocialKey, string> = {
   youtube: "YouTube",
 };
 
-export type Social = { key: SocialKey; label: string; url: string };
+const ORDER: SocialKey[] = ["instagram", "tiktok", "x", "threads", "linkedin", "youtube"];
 
-/** The profiles that have a valid https URL, in display order. */
+export type Social = { key: SocialKey; label: string; url: string };
+export type SocialSlot = { key: SocialKey; label: string; url: string | null };
+
+function validUrl(raw: string): string | null {
+  const url = raw.trim();
+  try {
+    return new URL(url).protocol === "https:" ? url : null;
+  } catch {
+    return null;
+  }
+}
+
+/** Every network in display order, with its URL or null if not set (or not a valid https URL). */
+export function allSocials(urls: Readonly<Record<SocialKey, string>> = SOCIAL_URLS): SocialSlot[] {
+  return ORDER.map((key) => ({ key, label: LABELS[key], url: validUrl(urls[key]) }));
+}
+
+/** Only the profiles that have a valid https URL, in display order. */
 export function activeSocials(urls: Readonly<Record<SocialKey, string>> = SOCIAL_URLS): Social[] {
-  return (Object.keys(LABELS) as SocialKey[]).flatMap((key) => {
-    const url = urls[key].trim();
-    try {
-      return new URL(url).protocol === "https:" ? [{ key, label: LABELS[key], url }] : [];
-    } catch {
-      return [];
-    }
-  });
+  return allSocials(urls).flatMap((s) => (s.url ? [{ ...s, url: s.url }] : []));
 }
