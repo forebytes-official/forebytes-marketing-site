@@ -3,8 +3,11 @@ import { createLimiter } from "@/lib/rate-limit";
 import { notifyNewSignup } from "@/lib/waitlist-notify";
 import { parseWaitlistBody } from "@/lib/waitlist";
 import { storeWaitlistEmail } from "@/lib/waitlist-store";
+import { sendWelcomeEmail } from "@/lib/waitlist-welcome";
 
 export const runtime = "nodejs";
+
+const errorMessage = (error: unknown) => (error instanceof Error ? error.message : error);
 
 const allow = createLimiter({ max: 5, windowMs: 10 * 60 * 1000 });
 
@@ -32,15 +35,14 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Something went wrong. Please try again." }, { status: 500 });
   }
 
-  // Alert the team about genuinely new signups only. It runs after the response is sent, so the
-  // visitor never waits on it, and a failed alert is logged but never fails the signup.
+  // For genuinely new signups only: welcome the visitor and alert the team. Both run after the
+  // response is sent, so the visitor never waits, and a failed email is logged but never fails the signup.
+  // A repeat signup gets nothing, so the form can't be used to spam someone's inbox.
   if (isNew) {
     after(async () => {
-      try {
-        await notifyNewSignup(result.email);
-      } catch (error) {
-        console.error("waitlist: could not send the signup alert", error instanceof Error ? error.message : error);
-      }
+      const [welcome, alert] = await Promise.allSettled([sendWelcomeEmail(result.email), notifyNewSignup(result.email)]);
+      if (welcome.status === "rejected") console.error("waitlist: could not send the welcome email", errorMessage(welcome.reason));
+      if (alert.status === "rejected") console.error("waitlist: could not send the signup alert", errorMessage(alert.reason));
     });
   }
   return NextResponse.json({ ok: true });

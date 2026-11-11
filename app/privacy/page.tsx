@@ -12,7 +12,7 @@ export default function Privacy() {
   return (
     <LegalPage
       tone="sage"
-      tag="Last updated 3 November 2026"
+      tag="Last updated 11 November 2026"
       title="Privacy"
       accentWord="policy."
       intro="What Forebytes collects, why, and the rights you have over it."
@@ -74,6 +74,12 @@ export default function Privacy() {
                 <p>We use Sentry to catch crashes and bugs, including some technical context (like which screen and what operation) to help us fix them.</p>
                 <p><b>Why:</b> so problems get found and fixed, ideally before you notice them twice. <b>Legal basis:</b> our legitimate interest in keeping the app working.</p>
               </Item>
+              <Item title="Website waitlist">
+                <p>If you join the waitlist on forebytes.com, we collect the email address you enter and the time you signed up. Nothing else is asked for.</p>
+                <p>We use it to send you a welcome email straight away, and to tell you when the app is available. We won&apos;t use it for anything else, and we won&apos;t add you to any other mailing list.</p>
+                <p>We keep it until we&apos;ve told you the app is available, or until you ask to be taken off the list, whichever comes first. To leave the list, reply to any waitlist email or write to {mail}.</p>
+                <p><b>Why:</b> because you asked to hear when Forebytes launches. <b>Legal basis:</b> your consent, given when you join the waitlist, which you can withdraw at any time.</p>
+              </Item>
             </>
           ),
         },
@@ -84,7 +90,8 @@ export default function Privacy() {
             <>
               <p>We don&apos;t sell your data, to anyone, ever. We do use a small number of other companies to actually run the service, each only for what they need:</p>
               <ul>
-                <li><b>Supabase:</b> our database, authentication and file storage, hosted in the EU. This holds the bulk of your account and content data.</li>
+                <li><b>Supabase:</b> our database, authentication and file storage, hosted in the EU. This holds the bulk of your account and content data, and the website waitlist.</li>
+                <li><b>Vercel:</b> hosts the forebytes.com website and handles the waitlist form when you submit it.</li>
                 <li><b>Mapbox:</b> provides the map and restaurant search results.</li>
                 <li><b>Google (Places API):</b> fills in restaurant photos that Mapbox doesn&apos;t provide.</li>
                 <li><b>Anthropic:</b> checks that a submitted AR photo matches the dish and estimates its size, for submissions that aren&apos;t a LiDAR scan.</li>
@@ -92,9 +99,9 @@ export default function Privacy() {
                 <li><b>Expo:</b> delivers push notifications to your device.</li>
                 <li><b>PostHog:</b> product analytics, EU-hosted.</li>
                 <li><b>Sentry:</b> error and crash reporting, EU-hosted.</li>
-                <li><b>Brevo:</b> sends transactional emails (sign-up confirmation, password reset, security notices). We do not use this for marketing emails.</li>
+                <li><b>Brevo:</b> sends transactional emails (sign-up confirmation, password reset, security notices) and the waitlist emails described above. We do not use this for marketing emails.</li>
               </ul>
-              <p>Supabase, PostHog, Sentry, and Brevo are all EU-hosted or EU-based companies. Mapbox, Google (for restaurant photos), Anthropic, and Meshy are US companies; where their processing involves data leaving the EU, this is covered by standard contractual clauses, the standard legal mechanism for that kind of transfer.</p>
+              <p>Supabase, PostHog, Sentry, and Brevo are all EU-hosted or EU-based companies. Mapbox, Google (for restaurant photos), Anthropic, Meshy, and Vercel are US companies; where their processing involves data leaving the EU, this is covered by standard contractual clauses, the standard legal mechanism for that kind of transfer.</p>
               <p>We may also disclose information if required by law, or to protect the safety of our users.</p>
             </>
           ),
