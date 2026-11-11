@@ -6,19 +6,20 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { registerGsap } from "@/lib/gsap";
 import { SITE } from "@/lib/site";
-import { activeSocials } from "@/lib/socials";
+import SocialIcons from "@/components/SocialIcons";
 
 const LETTERS = ["F", "o", "r", "e", "b", "y", "t", "e", "s", "."];
-const SOCIALS = activeSocials();
-const external = { target: "_blank", rel: "noopener noreferrer" } as const;
 
 export function FooterCompact() {
   return (
     <footer className="bg-accent-900 text-accent-200 px-page flex flex-wrap items-center justify-between gap-5 py-10">
-      <Link href="/" className="font-heading flex items-center gap-2.5 text-[26px] !text-bg">
-        <Image src="/logo.png" alt="" width={32} height={32} className="rounded-[9px]" />
-        Forebytes
-      </Link>
+      <div className="flex flex-col gap-3">
+        <Link href="/" className="font-heading flex items-center gap-2.5 text-[26px] !text-bg">
+          <Image src="/logo.png" alt="" width={32} height={32} className="rounded-[9px]" />
+          Forebytes
+        </Link>
+        <SocialIcons className="-ml-2.5 [&_a:hover]:text-white" size={20} />
+      </div>
       <div className="flex flex-wrap gap-7 text-[15px]">
         <Link href="/features" className="foot-link">Features</Link>
         <Link href="/about" className="foot-link">About</Link>
@@ -26,9 +27,6 @@ export function FooterCompact() {
         <Link href="/community-guidelines" className="foot-link">Community guidelines</Link>
         <Link href="/privacy" className="foot-link">Privacy policy</Link>
         <Link href="/terms" className="foot-link">Terms &amp; conditions</Link>
-        {SOCIALS.map((s) => (
-          <a key={s.key} href={s.url} {...external} className="foot-link">{s.label}</a>
-        ))}
       </div>
       <span className="text-sm">© 2026 {SITE.company.legalName} · Registered in {SITE.company.country}, no. {SITE.company.number}</span>
     </footer>
@@ -63,6 +61,7 @@ export function FooterFull() {
         <div className="max-w-[22em] text-lg leading-normal">
           <span className="font-heading text-bg mb-2 block text-[30px]">See it before you bite it.</span>
           Restaurant discovery and AR menus, launching in Dublin.
+          <SocialIcons className="mt-4 -ml-2.5 [&_a:hover]:text-white" />
         </div>
         <div className="flex flex-wrap gap-[clamp(32px,6vw,96px)] text-[17px]">
           <div className={col}>
@@ -83,14 +82,6 @@ export function FooterFull() {
             <Link href="/terms" className="foot-link">Terms &amp; conditions</Link>
             <Link href="/community-guidelines" className="foot-link">Community guidelines</Link>
           </div>
-          {SOCIALS.length > 0 && (
-            <div className={col}>
-              <b className="text-bg">Follow</b>
-              {SOCIALS.map((s) => (
-                <a key={s.key} href={s.url} {...external} className="foot-link">{s.label}</a>
-              ))}
-            </div>
-          )}
         </div>
       </div>
 
