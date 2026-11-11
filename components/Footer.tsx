@@ -13,10 +13,13 @@ const LETTERS = ["F", "o", "r", "e", "b", "y", "t", "e", "s", "."];
 export function FooterCompact() {
   return (
     <footer className="bg-accent-900 text-accent-200 px-page flex flex-wrap items-center justify-between gap-5 py-10">
-      <Link href="/" className="font-heading flex items-center gap-2.5 text-[26px] !text-bg">
-        <Image src="/logo.png" alt="" width={32} height={32} className="rounded-[9px]" />
-        Forebytes
-      </Link>
+      <div className="flex flex-col gap-3">
+        <Link href="/" className="font-heading flex items-center gap-2.5 text-[26px] !text-bg">
+          <Image src="/logo.png" alt="" width={32} height={32} className="rounded-[9px]" />
+          Forebytes
+        </Link>
+        <SocialIcons className="-ml-2.5 [&_a:hover]:text-white" size={20} />
+      </div>
       <div className="flex flex-wrap gap-7 text-[15px]">
         <Link href="/features" className="foot-link">Features</Link>
         <Link href="/about" className="foot-link">About</Link>
@@ -25,7 +28,6 @@ export function FooterCompact() {
         <Link href="/privacy" className="foot-link">Privacy policy</Link>
         <Link href="/terms" className="foot-link">Terms &amp; conditions</Link>
       </div>
-      <SocialIcons className="-mx-2.5 [&_a:hover]:text-white" size={20} />
       <span className="text-sm">© 2026 {SITE.company.legalName} · Registered in {SITE.company.country}, no. {SITE.company.number}</span>
     </footer>
   );
