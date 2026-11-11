@@ -6,8 +6,11 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { registerGsap } from "@/lib/gsap";
 import { SITE } from "@/lib/site";
+import { activeSocials } from "@/lib/socials";
 
 const LETTERS = ["F", "o", "r", "e", "b", "y", "t", "e", "s", "."];
+const SOCIALS = activeSocials();
+const external = { target: "_blank", rel: "noopener noreferrer" } as const;
 
 export function FooterCompact() {
   return (
@@ -23,6 +26,9 @@ export function FooterCompact() {
         <Link href="/community-guidelines" className="foot-link">Community guidelines</Link>
         <Link href="/privacy" className="foot-link">Privacy policy</Link>
         <Link href="/terms" className="foot-link">Terms &amp; conditions</Link>
+        {SOCIALS.map((s) => (
+          <a key={s.key} href={s.url} {...external} className="foot-link">{s.label}</a>
+        ))}
       </div>
       <span className="text-sm">© 2026 {SITE.company.legalName} · Registered in {SITE.company.country}, no. {SITE.company.number}</span>
     </footer>
@@ -77,6 +83,14 @@ export function FooterFull() {
             <Link href="/terms" className="foot-link">Terms &amp; conditions</Link>
             <Link href="/community-guidelines" className="foot-link">Community guidelines</Link>
           </div>
+          {SOCIALS.length > 0 && (
+            <div className={col}>
+              <b className="text-bg">Follow</b>
+              {SOCIALS.map((s) => (
+                <a key={s.key} href={s.url} {...external} className="foot-link">{s.label}</a>
+              ))}
+            </div>
+          )}
         </div>
       </div>
 

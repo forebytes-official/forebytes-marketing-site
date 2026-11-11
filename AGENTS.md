@@ -127,8 +127,10 @@ is chosen, the loading and empty states, and how to test: `docs/live-phones.md`.
 through PostgREST with the service role key; local dev falls back to `data/waitlist.jsonl`. In
 production with no Supabase configured it fails loudly (500) instead of losing signups. The table
 SQL is `supabase/waitlist.sql`. A genuinely new signup (not a duplicate) also emails the team through
-Brevo (`lib/waitlist-notify.ts`, optional via `BREVO_API_KEY`), sent with `after()` so the visitor
-never waits and a failed alert never fails the signup. See `docs/deployment.md`.
+Brevo (`lib/waitlist-notify.ts`) and sends the visitor a welcome email (`lib/waitlist-welcome.ts`,
+copy lives there). Both are optional via `BREVO_API_KEY` and sent with `after()`, so the visitor never
+waits and a failed email never fails the signup. Repeat signups get no email, so the form can't spam
+someone. The Privacy Policy's "Website waitlist" item describes this; keep the two in step. See `docs/deployment.md`.
 
 ### Domains and universal links (do not contradict the app)
 

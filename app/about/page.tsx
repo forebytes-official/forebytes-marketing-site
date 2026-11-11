@@ -5,6 +5,9 @@ import { FooterCompact } from "@/components/Footer";
 import Reveal from "@/components/Reveal";
 import IrelandMap from "@/components/IrelandMap";
 import { SITE } from "@/lib/site";
+import { activeSocials } from "@/lib/socials";
+
+const socials = activeSocials();
 
 export const metadata: Metadata = pageMeta({ title: "About", description: "Forebytes is a restaurant discovery app built around one idea: you should be able to see what a dish actually looks like before you order it.", path: "/about" });
 
@@ -82,6 +85,18 @@ export default function About() {
         <section id="contact" className="px-page" style={{ paddingBlock: "clamp(40px,8vh,90px) clamp(80px,14vh,160px)" }}>
           <Reveal as="h2" variant="left" className="font-heading m-0 max-w-[12em]" style={{ fontSize: "clamp(40px,6.5vw,104px)", lineHeight: 0.98 }}>Have a question, a correction, or feedback?</Reveal>
           <Reveal as="a" delay={250} className="btn btn-primary mt-8 !inline-flex !px-[30px] !py-4 !text-lg !text-bg" href={`mailto:${SITE.emails.support}`}>{SITE.emails.support}</Reveal>
+          {socials.length > 0 && (
+            <Reveal as="p" delay={350} className="mt-6 text-lg">
+              Or find us on{" "}
+              {socials.map((s, i) => (
+                <span key={s.key}>
+                  {i > 0 && (i === socials.length - 1 ? " and " : ", ")}
+                  <a href={s.url} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">{s.label}</a>
+                </span>
+              ))}
+              .
+            </Reveal>
+          )}
         </section>
       </main>
       <FooterCompact />

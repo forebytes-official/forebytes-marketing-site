@@ -1,6 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { caprasimo, figtree, inter, playfair } from "@/lib/fonts";
 import { SITE } from "@/lib/site";
+import { activeSocials } from "@/lib/socials";
+
+const sameAs = activeSocials().map((s) => s.url);
 import SmoothScroll from "@/components/SmoothScroll";
 import JsonLd from "@/components/JsonLd";
 import "./globals.css";
@@ -39,7 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <JsonLd data={{
           "@context": "https://schema.org",
           "@graph": [
-            { "@type": "Organization", "@id": `${SITE.url}/#org`, name: SITE.name, url: SITE.url, logo: `${SITE.url}/logo.png`, email: SITE.emails.support },
+            { "@type": "Organization", "@id": `${SITE.url}/#org`, name: SITE.name, url: SITE.url, logo: `${SITE.url}/logo.png`, email: SITE.emails.support, ...(sameAs.length ? { sameAs } : {}) },
             { "@type": "WebSite", "@id": `${SITE.url}/#site`, url: SITE.url, name: SITE.name, description: SITE.description, inLanguage: "en-IE", publisher: { "@id": `${SITE.url}/#org` } },
           ],
         }} />
