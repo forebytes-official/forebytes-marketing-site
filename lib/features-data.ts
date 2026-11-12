@@ -30,7 +30,7 @@ export const FEATURES: Feature[] = [
     h: "Prices and nutrition, up front.",
     b: "Every dish shows its price and, where it's been added, calories, protein, carbs and fat before you order, not after. Menus are kept current by the people who've actually eaten there, not scanned from a PDF once and left to rot.",
     icon: "pricetag",
-    bg: "bg-accent",
+    bg: "bg-accent-strong",
     dot: "bg-accent-900",
     fg: "text-bg",
   },

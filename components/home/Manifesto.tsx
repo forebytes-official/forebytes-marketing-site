@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
-import { registerGsap } from "@/lib/gsap";
+import { registerGsap, prefersReducedMotion } from "@/lib/gsap";
 
 const TEXT = "Menus are flat photos and guesses. Your dinner is not. Forebytes lets you see the real dish, at real size, on your real table.";
 
@@ -12,6 +12,7 @@ export default function Manifesto() {
 
   useGSAP(
     () => {
+      if (prefersReducedMotion()) return;
       const { gsap } = registerGsap();
       const spans = gsap.utils.toArray<HTMLElement>("[data-w]", root.current!);
       const accent = getComputedStyle(document.documentElement).getPropertyValue("--color-accent").trim();
@@ -32,6 +33,7 @@ export default function Manifesto() {
 
   return (
     <section ref={root} className="relative" style={{ height: "260vh" }}>
+      <noscript><style>{".reveal-word{opacity:1!important}"}</style></noscript>
       <div className="px-page sticky top-0 flex h-dvh items-center pt-16">
         <div>
           <p
@@ -39,7 +41,7 @@ export default function Manifesto() {
             style={{ fontSize: "clamp(28px,min(6.2vw,9.5dvh),104px)", lineHeight: 1.04, letterSpacing: "-.02em" }}
           >
             {words.map((w, i) => (
-              <span key={i} data-w className="inline-block whitespace-pre" style={{ opacity: 0.14 }}>
+              <span key={i} data-w className="reveal-word inline-block whitespace-pre">
                 {w}{" "}
               </span>
             ))}

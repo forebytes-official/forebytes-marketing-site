@@ -9,7 +9,7 @@ import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = pageMeta({ title: "FAQs", description: "Answers to common questions about Forebytes, AR dishes, privacy and your account.", path: "/faq" });
 
-const mail = <a href={`mailto:${SITE.emails.support}`}>{SITE.emails.support}</a>;
+const mail = <a href={`mailto:${SITE.emails.support}`} className="!underline underline-offset-4">{SITE.emails.support}</a>;
 
 const FAQS: { q: string; a: React.ReactNode; text?: string }[] = [
   { q: "What is Forebytes?", a: "A restaurant discovery app that shows you real dishes, contributed by real diners, with the goal of letting you see a dish in AR before you order it." },

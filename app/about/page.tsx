@@ -11,11 +11,11 @@ export const metadata: Metadata = pageMeta({ title: "About", description: "Foreb
 
 const TODAY = [
   { t: "A live map", b: "Restaurants near you, with search and dietary filters.", bg: "bg-accent-2-300", dot: "bg-accent-2-700 text-bg", fg: "" },
-  { t: "Real menus and photos", b: "Contributed by the people who've actually eaten there.", bg: "bg-accent", dot: "bg-accent-900", fg: "text-bg" },
+  { t: "Real menus and photos", b: "Contributed by the people who've actually eaten there.", bg: "bg-accent-strong", dot: "bg-accent-900", fg: "text-bg" },
   { t: "Ratings and reviews", b: "For restaurants and for individual dishes.", bg: "bg-accent-200", dot: "bg-accent text-bg", fg: "" },
   { t: "Lists", b: "Save places you want to try, have visited, or have rated.", bg: "bg-accent-200", dot: "bg-accent text-bg", fg: "" },
   { t: "A feed", b: "What the people you follow are eating and rating.", bg: "bg-accent-2-300", dot: "bg-accent-2-700 text-bg", fg: "" },
-  { t: "Dish-level AR", b: "Rolling out as the underlying technology ships.", bg: "bg-accent", dot: "bg-accent-900", fg: "text-bg" },
+  { t: "Dish-level AR", b: "Rolling out as the underlying technology ships.", bg: "bg-accent-strong", dot: "bg-accent-900", fg: "text-bg" },
 ];
 
 const Word = ({ d, accent, children }: { d: number; accent?: boolean; children: string }) => (
@@ -85,7 +85,7 @@ export default function About() {
           <Reveal as="a" delay={250} className="btn btn-primary mt-8 !inline-flex !px-[30px] !py-4 !text-lg !text-bg" href={`mailto:${SITE.emails.support}`}>{SITE.emails.support}</Reveal>
           <Reveal delay={350} className="mt-8">
             <p className="m-0 mb-2 text-lg">Or find us on</p>
-            <SocialIcons className="-ml-2.5 text-accent-900 [&_a:hover]:text-accent" size={24} />
+            <SocialIcons className="-ml-2.5 text-accent-900" size={24} />
           </Reveal>
         </section>
       </main>

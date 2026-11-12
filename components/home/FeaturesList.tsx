@@ -47,8 +47,10 @@ export default function FeaturesList({ items }: { items: Feature[] }) {
               href={`#${it.id}`}
               className="flex items-center gap-3 rounded-full px-4 py-2.5 text-[15px] transition-[opacity,background-color] duration-300"
               style={{
+                // Inactive links stay readable (they are live links, not disabled): weight and the pill
+                // background mark the current one, not a 45% fade that dropped them to 2:1.
                 fontWeight: isActive ? 600 : 400,
-                opacity: isActive ? 1 : 0.45,
+                color: isActive ? "var(--color-text)" : "var(--color-neutral-700)",
                 background: isActive ? "var(--color-accent-100)" : "transparent",
               }}
             >
@@ -73,7 +75,7 @@ export default function FeaturesList({ items }: { items: Feature[] }) {
                   <Icon size={26} />
                 </div>
                 <div>
-                  <div className="font-heading mb-1 text-sm tracking-[.12em] uppercase opacity-70">{it.t}</div>
+                  <div className="font-heading mb-1 text-sm tracking-[.12em] uppercase">{it.t}</div>
                   <h2 className="font-heading m-0" style={{ fontSize: "clamp(26px,3.2vw,40px)", lineHeight: 1.05 }}>{it.h}</h2>
                   <p className="mt-3 mb-0 max-w-[46em] leading-normal">{it.b}</p>
                 </div>

@@ -37,7 +37,7 @@ export default function Cta() {
           <h2 className="font-heading mt-5 mb-0" style={{ fontSize: "clamp(36px,min(9vw,13dvh),150px)", lineHeight: 0.92, letterSpacing: "-.02em" }}>
             See it before<br />you bite it.
           </h2>
-          <p className="mt-[clamp(10px,2.4dvh,20px)] mb-[clamp(14px,3.4dvh,28px)]" style={{ fontSize: "clamp(15px,1.6vw,22px)" }}>Be first in line when Forebytes lands in Dublin.</p>
+          <p className="mt-[clamp(10px,2.4dvh,20px)] mb-[clamp(14px,3.4dvh,28px)] font-bold" style={{ fontSize: "clamp(19px,1.6vw,22px)" }}>Be first in line when Forebytes lands in Dublin.</p>
           <WaitlistForm />
         </div>
       </div>

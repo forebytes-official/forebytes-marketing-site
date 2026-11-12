@@ -7,6 +7,7 @@ import { useGSAP } from "@gsap/react";
 import { registerGsap } from "@/lib/gsap";
 import { SITE } from "@/lib/site";
 import SocialIcons from "@/components/SocialIcons";
+import MotionToggle from "@/components/MotionToggle";
 
 const LETTERS = ["F", "o", "r", "e", "b", "y", "t", "e", "s", "."];
 
@@ -18,17 +19,20 @@ export function FooterCompact() {
           <Image src="/logo.png" alt="" width={32} height={32} className="rounded-[9px]" />
           Forebytes
         </Link>
-        <SocialIcons className="-ml-2.5 [&_a:hover]:text-white" size={20} />
+        <SocialIcons className="-ml-2.5" size={20} />
       </div>
-      <div className="flex flex-wrap gap-7 text-[15px]">
+      <nav aria-label="Footer" className="flex flex-wrap gap-7 text-[15px]">
         <Link href="/features" className="foot-link">Features</Link>
         <Link href="/about" className="foot-link">About</Link>
         <Link href="/faq" className="foot-link">FAQs</Link>
         <Link href="/community-guidelines" className="foot-link">Community guidelines</Link>
         <Link href="/privacy" className="foot-link">Privacy policy</Link>
         <Link href="/terms" className="foot-link">Terms &amp; conditions</Link>
+      </nav>
+      <div className="flex flex-col gap-1 text-sm">
+        <span>© 2026 {SITE.company.legalName} · Registered in {SITE.company.country}, no. {SITE.company.number}</span>
+        <span><MotionToggle variant="footer" /></span>
       </div>
-      <span className="text-sm">© 2026 {SITE.company.legalName} · Registered in {SITE.company.country}, no. {SITE.company.number}</span>
     </footer>
   );
 }
@@ -61,9 +65,9 @@ export function FooterFull() {
         <div className="max-w-[22em] text-lg leading-normal">
           <span className="font-heading text-bg mb-2 block text-[30px]">See it before you bite it.</span>
           Restaurant discovery and AR menus, launching in Dublin.
-          <SocialIcons className="mt-4 -ml-2.5 [&_a:hover]:text-white" />
+          <SocialIcons className="mt-4 -ml-2.5" />
         </div>
-        <div className="flex flex-wrap gap-[clamp(32px,6vw,96px)] text-[17px]">
+        <nav aria-label="Footer" className="flex flex-wrap gap-[clamp(32px,6vw,96px)] text-[17px]">
           <div className={col}>
             <b className="text-bg">Product</b>
             <a href="#how" className="foot-link">How it works</a>
@@ -82,7 +86,7 @@ export function FooterFull() {
             <Link href="/terms" className="foot-link">Terms &amp; conditions</Link>
             <Link href="/community-guidelines" className="foot-link">Community guidelines</Link>
           </div>
-        </div>
+        </nav>
       </div>
 
       <div
@@ -100,7 +104,7 @@ export function FooterFull() {
 
       <div className="flex flex-wrap justify-between gap-3 border-t border-accent-200/25 pt-[18px] pb-6 text-sm">
         <span>© 2026 {SITE.company.legalName} · Registered in {SITE.company.country}, no. {SITE.company.number}</span>
-        <span>Made for the hungry.</span>
+        <span className="flex gap-5"><MotionToggle variant="footer" /><span>Made for the hungry.</span></span>
       </div>
     </footer>
   );

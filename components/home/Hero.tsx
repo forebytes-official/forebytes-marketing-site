@@ -65,6 +65,7 @@ export default function Hero() {
       document.fonts?.ready.then(size);
       if (prefersReducedMotion()) return;
       const id = window.setInterval(() => {
+        if (document.documentElement.dataset.motion === "paused") return;
         const prev = words[cur];
         cur = (cur + 1) % words.length;
         const next = words[cur];
@@ -95,10 +96,10 @@ export default function Hero() {
           <span className="fade-up block whitespace-nowrap" style={{ animationDelay: ".85s", animationDuration: ".9s" }}>
             <span
               data-flip
-              aria-label="bite, buy, try, rate, byte, share or write"
               className="text-accent relative inline-block align-top"
               style={{ height: "1.04em", perspective: 700, transition: "width .6s cubic-bezier(.65,0,.35,1)" }}
             >
+              <span className="sr-only">bite, buy, try, rate, byte, share or write</span>
               {FLIP_WORDS.map((w) => (
                 <span key={w} data-fw aria-hidden className="absolute top-0 left-0 whitespace-nowrap" style={{ transformOrigin: "50% 50% -.5em", backfaceVisibility: "hidden" }}>{w}</span>
               ))}

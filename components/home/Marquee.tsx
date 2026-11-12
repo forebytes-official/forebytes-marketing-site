@@ -35,7 +35,7 @@ export default function Marquee() {
 
   return (
     <div role="presentation" className="bg-accent relative z-[2] overflow-hidden py-[22px] shadow-md" style={{ transform: "rotate(-2deg)", margin: "0 -4vw" }}>
-      <div ref={skew} className="flex w-max" style={{ animation: "marquee 28s linear infinite" }}>
+      <div ref={skew} className="anim-marquee flex w-max" style={{ animation: "marquee 28s linear infinite" }}>
         <Strip />
         <Strip />
       </div>

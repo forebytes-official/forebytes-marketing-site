@@ -38,6 +38,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${caprasimo.variable} ${figtree.variable} ${playfair.variable} ${inter.variable}`}>
       <body className="bg-bg text-text font-body antialiased">
+        {/* Re-apply a visitor's "Pause animations" choice before first paint. */}
+        <script dangerouslySetInnerHTML={{ __html: `try{if(localStorage.getItem("forebytes.motion")==="paused")document.documentElement.dataset.motion="paused"}catch(e){}` }} />
         <SmoothScroll />
         <JsonLd data={{
           "@context": "https://schema.org",
