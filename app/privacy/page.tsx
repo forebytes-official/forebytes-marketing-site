@@ -12,7 +12,7 @@ export default function Privacy() {
   return (
     <LegalPage
       tone="sage"
-      tag="Last updated 11 November 2026"
+      tag="Last updated 12 November 2026"
       title="Privacy"
       accentWord="policy."
       intro="What Forebytes collects, why, and the rights you have over it."
@@ -38,8 +38,8 @@ export default function Privacy() {
           body: (
             <>
               <Item title="Account information">
-                <p>Email address, username, and a hashed password (we never see or store your password in plain text), collected when you sign up. If you sign in with Apple or Google instead, we receive only the minimum identifier and email those services pass us. We never see your Apple or Google password.</p>
-                <p><b>Why:</b> to create and secure your account, and to let you sign back in. <b>Legal basis:</b> necessary to provide the service you&apos;ve signed up for.</p>
+                <p>Email address, username, and a hashed password (we never see or store your password in plain text), collected when you sign up. If you sign in with Apple or Google instead, we receive only the minimum identifier and email those services pass us. We never see your Apple or Google password. We also record the date you confirmed you are 16 or older when you signed up.</p>
+                <p><b>Why:</b> to create and secure your account, to let you sign back in, and to keep a record that you confirmed the minimum age. <b>Legal basis:</b> necessary to provide the service you&apos;ve signed up for.</p>
               </Item>
               <Item title="Profile information">
                 <p>Display name, username, an optional avatar photo, and whether your account is private or public.</p>
@@ -47,15 +47,15 @@ export default function Privacy() {
               </Item>
               <Item title="Location">
                 <p>Your device&apos;s location, while you have the discover map open.</p>
-                <p><b>Why:</b> to show you restaurants near you. This is used live to query nearby places; it is not stored or retained once your session ends. <b>Legal basis:</b> necessary to provide the feature you&apos;ve opened.</p>
+                <p><b>Why:</b> to show you restaurants near you. It is sent to Mapbox to find nearby places, and to Google when you search, and we don&apos;t store it or keep it once your session ends. The one exception: if you add a restaurant without an address, we save your current position as that restaurant&apos;s location. <b>Legal basis:</b> necessary to provide the feature you&apos;ve opened.</p>
               </Item>
               <Item title="Content you create">
-                <p>Restaurant and dish ratings, written reviews, lists of places you&apos;ve saved or want to try, and restaurants and dishes you contribute.</p>
+                <p>Restaurant and dish ratings, written reviews, lists of places you&apos;ve saved or want to try, restaurants and dishes you contribute, and photos you add to menus or restaurants (faces are blurred and location data is removed on your phone first).</p>
                 <p><b>Why:</b> this is the substance of the app, it&apos;s what you&apos;re here to do, and it&apos;s what other users see when they look up a restaurant or dish. <b>Legal basis:</b> necessary to provide the service.</p>
               </Item>
               <Item title="AR submissions (dish photos and scans)">
-                <p>When you submit a dish for AR, what happens depends on your phone. On a LiDAR iPhone, the scan is built and processed on the device; nothing but the finished 3D model ever leaves your phone. On any other iPhone, you submit a few guided photos instead: faces are blurred and location data is stripped from the photo on your device, and the dish is cut out of its background, before anything leaves your phone. The photo is then checked against the dish by Anthropic (confirming it&apos;s a genuine match and estimating its size), and the 3D model itself is built by Meshy. Every submission, from either path, is reviewed by a moderator before it goes live.</p>
-                <p>Submitted photos are deleted once moderation is complete, whether the submission is approved or rejected. An approved 3D model is kept for as long as the dish listing it belongs to exists.</p>
+                <p>When you submit a dish for AR, what happens depends on your phone. On a LiDAR iPhone, the scan is built and processed on the device; nothing but the finished 3D model ever leaves your phone. On any other iPhone, you submit a few guided photos instead: faces are blurred and location data is removed on your device. We upload that photo and, where your phone can make one, a copy with the background removed. The photo is then checked against the dish by Anthropic (confirming it&apos;s a genuine match and estimating its size), and the 3D model itself is built by Meshy. Every submission, from either path, is reviewed by a moderator before it goes live.</p>
+                <p>Submitted photos are not deleted automatically once moderation is complete, whether the submission is approved or rejected. If you would like yours removed, email {mail} and we will delete them. An approved 3D model is kept for as long as the dish listing it belongs to exists.</p>
                 <p><b>Why:</b> to build and verify the AR model you&apos;re contributing. <b>Legal basis:</b> necessary to provide the feature you&apos;ve chosen to use.</p>
               </Item>
               <Item title="Social connections">
@@ -111,7 +111,7 @@ export default function Privacy() {
           title: "Moderation",
           body: (
             <>
-              <p>When you report a restaurant, dish, review, or user, we store that report. A moderator reviewing it can see the content or account that was reported and who submitted it, so they can look into both sides of it.</p>
+              <p>When you report a dish, a restaurant someone added, or a cover photo, we store that report. A moderator reviewing it can see what was reported and who submitted it, so they can look into both sides of it.</p>
               <p>AR submissions go through the same kind of review before they go live (see &quot;AR submissions&quot; above).</p>
             </>
           ),
@@ -134,7 +134,7 @@ export default function Privacy() {
               <p>Under GDPR, you have the right to:</p>
               <ul>
                 <li>Access the personal data we hold about you</li>
-                <li>Correct inaccurate data (you can do most of this yourself, in Profile &gt; Edit)</li>
+                <li>Correct inaccurate data (you can do most of this yourself, in Profile &gt; Settings &gt; Edit profile)</li>
                 <li>Erase your data (Settings &gt; Delete Account, which is a real, immediate erasure)</li>
                 <li>Port your data to another service</li>
                 <li>Object to or restrict certain processing</li>
