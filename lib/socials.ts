@@ -6,12 +6,12 @@
  * filled ones, so nothing outside the site ever points at a missing profile.
  */
 export const SOCIAL_URLS: Record<SocialKey, string> = {
-  instagram: "",
-  tiktok: "",
-  x: "",
-  threads: "",
-  linkedin: "",
-  youtube: "",
+  instagram: "https://www.instagram.com/forebytes/",
+  tiktok: "https://www.tiktok.com/@forebytes",
+  x: "https://x.com/forebytes",
+  threads: "https://www.threads.com/@forebytes",
+  linkedin: "https://linkedin.com/company/forebytes",
+  youtube: "https://www.youtube.com/@Forebytes",
 };
 
 export type SocialKey = "instagram" | "tiktok" | "x" | "threads" | "linkedin" | "youtube";
