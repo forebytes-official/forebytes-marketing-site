@@ -3,8 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import MotionToggle from "@/components/MotionToggle";
 
-const pill = "text-text font-semibold text-[15px] min-h-9 items-center px-1.5 whitespace-nowrap";
+const pill = "!text-text font-semibold text-[15px] min-h-9 items-center px-1.5 whitespace-nowrap";
 
 export default function Nav() {
   const path = usePathname();
@@ -14,6 +15,7 @@ export default function Nav() {
   return (
     <>
     <a href="#main" className="skip-link">Skip to content</a>
+    <MotionToggle variant="skip" />
     <header className="pointer-events-none fixed inset-x-0 top-4 z-50 flex justify-center px-4">
       <nav
         aria-label="Primary"

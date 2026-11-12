@@ -8,6 +8,8 @@
   --color-surface: #ebddc5;
   --color-text: #201e1d;
   --color-accent: #c67139;
+  /* Darker terracotta for buttons that carry cream text: 4.6:1, where --color-accent gives only 3.0:1 (WCAG AA needs 4.5:1 for normal text). */
+  --color-accent-strong: #9a582c;
   --color-accent-2: #7a8a5e;
   --color-divider: color-mix(in srgb, #201e1d 16%, transparent);
 
@@ -115,9 +117,25 @@ p { text-wrap: pretty; }
 .foot-link { color: var(--color-accent-200); display: inline-block; padding-block: 6px; }
 .foot-link:hover { color: #fff; }
 
+/* Social icons: brand colour on a white circle on hover and keyboard focus */
+/* color: inherit, because the global `a` colour is a dark brown that vanishes on the dark footer. */
+.social-link { color: inherit; transition: color .2s, background-color .2s, transform .2s; }
+.social-link:hover, .social-link:focus-visible { background: #fff; color: var(--brand); transform: translateY(-2px); }
+.social-link[data-social="instagram"]:hover path, .social-link[data-social="instagram"]:focus-visible path { fill: var(--ig-fill); }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 1ms !important; animation-iteration-count: 1 !important; }
 }
+
+/* The visitor's own "Pause animations" switch (components/MotionToggle.tsx). Only the endless loops
+   pause; entrance animations are left alone because pausing one mid-way could leave content hidden. */
+:root[data-motion="paused"] :is(.anim-blob, .anim-bob, .anim-spin, .anim-ping, .anim-marquee) { animation-play-state: paused !important; }
+
+/* A focused link must never sit under the fixed nav (WCAG 2.4.11). */
+html { scroll-padding-top: 96px; }
+
+/* Words that light up as you scroll start faint. Reduced motion, and no JavaScript, show them at full strength. */
+@media (prefers-reduced-motion: no-preference) { .reveal-word { opacity: .14; } }
 
 /* long-form legal copy */
 .legal-prose p { margin: 0 0 1em; }

@@ -79,7 +79,7 @@ export default function Features() {
           </Reveal>
           <Reveal as="p" delay={200} className="mt-10 max-w-[34em] text-sm leading-normal opacity-70">
             Questions about a specific feature?{" "}
-            <a href={`mailto:${SITE.emails.support}`} className="text-accent underline underline-offset-2">{SITE.emails.support}</a>
+            <a href={`mailto:${SITE.emails.support}`} className="!underline underline-offset-2">{SITE.emails.support}</a>
           </Reveal>
         </section>
       </main>

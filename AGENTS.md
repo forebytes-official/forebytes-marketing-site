@@ -101,6 +101,12 @@ body, loaded with `next/font` (variables `--f-caprasimo`, `--f-figtree`).
   is visible. A link to a scene's own top would land on a blank first frame. Add the same marker to any new
   pinned scene that gets a nav link.
 
+### Accessibility
+
+The site targets WCAG 2.2 AA; read `docs/accessibility.md` before changing colours, focus styles, motion or forms.
+Buttons with cream text use `--color-accent-strong`, never `--color-accent`. Anything that moves on its own forever must be
+stoppable by `MotionToggle` (tag it with an `anim-*` class listed in `globals.css`). `lib/__tests__/contrast.test.ts` guards the tokens.
+
 ### Motion
 
 - Scroll scenes are client components using GSAP `ScrollTrigger` through `useGSAP`; Lenis drives
